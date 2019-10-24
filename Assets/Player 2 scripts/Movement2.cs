@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class Movement2 : MonoBehaviour
 {
     Rigidbody rb;
     public float speed = 4.0f;
@@ -16,11 +16,11 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             rb.velocity = transform.right * speed;
         }
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             rb.velocity = -transform.right * speed;
         }
@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = transform.right * 0;
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             rb.velocity = transform.up * speed;
         }
