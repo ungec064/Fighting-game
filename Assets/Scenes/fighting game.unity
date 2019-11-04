@@ -243,7 +243,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 8
+  jumpspeed: 1
   Health: 100
+  stance: 0
+  airstance: 0
+  halfspeed: 2
+  lowestspeed: 1
 --- !u!1 &326528398
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +953,9 @@ MonoBehaviour:
   jumpspeed: 25
   Health: 100
   stance: 0
+  airstance: 0
+  halfspeed: 10
+  lowestspeed: 5
 --- !u!1 &1928712074
 GameObject:
   m_ObjectHideFlags: 0
