@@ -12,14 +12,19 @@ public class Movement : MonoBehaviour
     public float airstance = 0;
     public float halfspeed = 2.0f;
     public float lowestspeed = 1.0f;
+    public float left = 0;
+    public float right = 0;
+    public float down = 0;
+    public float up = 0;
     private void OnCollisionStay(Collision collision)
     {
         stance = 0;
         airstance = 0;
     }
-
-
-
+    private void OnCollisionExit(Collision collision)
+    {
+        stance = 1;
+    }
 
     void Start()
     {
@@ -61,7 +66,7 @@ public class Movement : MonoBehaviour
         //left
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-
+            left = 1;
 
             if(stance < 1) {
                 rb.velocity = new Vector3(-speed, 0, 0);

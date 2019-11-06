@@ -12,12 +12,20 @@ public class Movement2 : MonoBehaviour
     public float airstance = 0;
     public float halfspeed = 2.0f;
     public float lowestspeed = 1.0f;
+    public float left = 0;
+    public float right = 0;
+    public float down = 0;
+    public float up = 0;
+
     private void OnCollisionStay(Collision collision)
     {
         stance = 0;
         airstance = 0;
     }
-
+    private void OnCollisionExit(Collision collision)
+    {
+        stance = 1;
+    }
 
 
 
@@ -33,7 +41,7 @@ public class Movement2 : MonoBehaviour
     void Update()
     {
         //right
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
 
 
@@ -60,7 +68,7 @@ public class Movement2 : MonoBehaviour
         }
 
         //left
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
 
 
@@ -97,7 +105,7 @@ public class Movement2 : MonoBehaviour
         }
 
         //jump
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (stance < 2))
+        if (Input.GetKeyDown(KeyCode.W) && (stance < 2))
         {
             rb.velocity = new Vector3(0, jumpspeed, 0);
             stance = stance + 1;
