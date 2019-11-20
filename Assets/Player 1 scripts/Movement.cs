@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    GameObject ground;
     Rigidbody rb;
     Collider m_ObjectCollider;
     public float speed = 4.0f;
@@ -19,8 +20,9 @@ public class Movement : MonoBehaviour
     public float up = 0;
     public float fallingThrough = 0;
     public float grounded = 0;
-    
-    
+    public float time = 1;
+
+
     //The collision and trigger stuff
 
 
@@ -28,29 +30,27 @@ public class Movement : MonoBehaviour
     {
         stance = 0;
         airstance = 0;
-
-        if (collision.gameObject.tag.Equals("ground"))
-        {
-            grounded = 1;
-        }
     }
     private void OnCollisionExit(Collision collision)
     {
         stance = 1;
-        grounded = 0;
-    }
 
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+       
+    }
 
 
     private void OnTriggerEnter(Collider ground)
     {
-        grounded = 1;
+        
     }
     private void OnTriggerExit(Collider ground)
     {
-        grounded = 0;
+        m_ObjectCollider.isTrigger = false;
     }
-    
+
 
 
 
@@ -69,8 +69,11 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        
+
         //right
-        if (Input.GetKey(KeyCode.RightArrow)){
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
 
 
             if (stance < 1)
@@ -100,7 +103,8 @@ public class Movement : MonoBehaviour
         {
             left = 1;
 
-            if(stance < 1) {
+            if (stance < 1)
+            {
                 rb.velocity = new Vector3(-speed, 0, 0);
             }
 
@@ -128,7 +132,8 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.None))
         {
             rb.velocity = new Vector3(0, 0, 0);
-            m_ObjectCollider.isTrigger = false;
+            
+
         }
 
         //jump
@@ -136,32 +141,20 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector3(0, jumpspeed, 0);
             stance = stance + 1;
+            m_ObjectCollider.isTrigger = true;
+        }
+
+        if (stance == 2)
+        {
             m_ObjectCollider.isTrigger = false;
         }
-
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
 
-            if (grounded == 1)
-            {
-                m_ObjectCollider.isTrigger = false;
-
-            }
-            if (stance < 1)
-            {
-                m_ObjectCollider.isTrigger = true;
-                fallingThrough = 1;                  
-            }
-            while (fallingThrough < 1)
-            {
-                if (grounded > 0)
-                {
-                    m_ObjectCollider.isTrigger = false;
-                }
-            }
-
+            m_ObjectCollider.isTrigger = true;
+                       
         }
-        
-    
-        }
+
+
+    }
 }
