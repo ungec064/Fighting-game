@@ -92,8 +92,11 @@ public class Movement2 : MonoBehaviour
                 rb.velocity = new Vector3(-lowestspeed, -3, 0);
                 airstance = airstance + 1;
             }
-
-
+            if (Health == 0)
+            {
+                Destroy(gameObject);
+            }
+            
 
         }
 

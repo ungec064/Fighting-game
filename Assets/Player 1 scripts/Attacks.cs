@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Attacks : MonoBehaviour
 {
-   
+    public bool attackleft = false;
     
     // Start is called before the first frame update
     void Start()
@@ -14,13 +14,18 @@ public class Attacks : MonoBehaviour
 
     // Update is called once per frame
     
-        void Update()
+    void Update()
+    { 
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-        if (Input.GetKey(KeyCode.RightControl))
+            attackleft = true;
+        }
+        if (Input.GetKey(KeyCode.None))
         {
+            attackleft = false;
+        }
 
-        }
-        }
+    }
 
     }
 
