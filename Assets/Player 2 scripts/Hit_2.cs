@@ -14,7 +14,11 @@ public class Hit_2 : MonoBehaviour
     {
         Hit = 1;
     }
-
+    private void OnTriggerExit(Collider LeftAttack)
+    {
+        Hit = 0;
+        TakeDamage = 0;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +33,10 @@ public class Hit_2 : MonoBehaviour
         {
             if (At.attackleft == true) {
                 TakeDamage = 1;
+            }
+            if (At.attackleft == false)
+            {
+                TakeDamage = 0;
             }
         }
     }

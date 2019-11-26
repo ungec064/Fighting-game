@@ -139,13 +139,13 @@ public class Movement2 : MonoBehaviour
         if (H.TakeDamage == 1)
         {
             if (DamageCooldown == 0)
-                Health = Health - 5;
-            DamageCooldown = 20;
+                Health = Health - 2;
+            DamageCooldown = 1;
         }
 
         if (DamageCooldown > 0)
         {
-            DamageCooldown = 1;
+            DamageCooldown =DamageCooldown -  1;
         }
 
         if (Health == 0)

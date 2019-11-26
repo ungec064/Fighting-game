@@ -51,12 +51,6 @@ public class Movement : MonoBehaviour
         m_ObjectCollider.isTrigger = false;
     }
 
-
-
-
-
-
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
