@@ -254,6 +254,7 @@ MonoBehaviour:
   right: 0
   down: 0
   up: 0
+  DamageCooldown: 2
 --- !u!114 &258905184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,8 +267,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98f9572041e771d4f98722e302dd37e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TakeDamage: 0
   Hit: 0
   LeftAttack: {fileID: 1977645176}
+  Player_1: {fileID: 1774542353}
 --- !u!1 &326528398
 GameObject:
   m_ObjectHideFlags: 0

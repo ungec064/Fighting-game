@@ -6,8 +6,10 @@ public class Hit_2 : MonoBehaviour
 {
     Attacks At;
     Movement2 Mv2;
+    public float TakeDamage = 0;
     public float Hit = 0;
     public GameObject LeftAttack;
+    public GameObject Player_1;
     private void OnTriggerEnter(Collider LeftAttack)
     {
         Hit = 1;
@@ -16,7 +18,8 @@ public class Hit_2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        At = Player_1.GetComponent<Attacks>();
+        GetComponent<Movement2>();
     }
 
     // Update is called once per frame
@@ -25,7 +28,7 @@ public class Hit_2 : MonoBehaviour
         if (Hit == 1)
         {
             if (At.attackleft == true) {
-                Mv2.Health = Mv2.Health - 5;
+                TakeDamage = 1;
             }
         }
     }
