@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
     public float fallingThrough = 0;
     public float grounded = 0;
     public float time = 1;
-
+    public Vector3 Position;
 
     //The collision and trigger stuff
 
@@ -38,13 +38,13 @@ public class Movement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-       
+
     }
 
 
     private void OnTriggerEnter(Collider ground)
     {
-        
+
     }
     private void OnTriggerExit(Collider ground)
     {
@@ -63,12 +63,12 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        
+
 
         //right
         if (Input.GetKey(KeyCode.RightArrow))
         {
-
+            Position = rb.position;
 
             if (stance < 1)
             {
@@ -96,7 +96,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             left = 1;
-
+            Position = rb.position;
             if (stance < 1)
             {
                 rb.velocity = new Vector3(-speed, 0, 0);
@@ -126,13 +126,14 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.None))
         {
             rb.velocity = new Vector3(0, 0, 0);
-            
+            Position = rb.position;
 
         }
 
         //jump
         if (Input.GetKeyDown(KeyCode.UpArrow) && (stance < 2))
         {
+            Position = rb.position;
             rb.velocity = new Vector3(0, jumpspeed, 0);
             stance = stance + 1;
             m_ObjectCollider.isTrigger = true;
@@ -144,11 +145,11 @@ public class Movement : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-
+            Position = rb.position;
             m_ObjectCollider.isTrigger = true;
-                       
+
         }
 
 
     }
-}
+}  
