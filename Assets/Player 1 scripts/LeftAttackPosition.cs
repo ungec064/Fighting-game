@@ -4,27 +4,39 @@ using UnityEngine;
 
 public class LeftAttackPosition : MonoBehaviour
 {
-    public Transform LeftAttack;
+    public Transform LeftAt;
     public Transform Player_1;
-  
+    public Attacks At;
+    public ParticleSystem LAttackEf;
+
 
     void Start()
     {
-
-        LeftAttack.position = Player_1.position;
-        LeftAttack.parent = Player_1;
        
-       
+        LeftAt.position = Player_1.position;
+        LeftAt.parent = Player_1;
+        LAttackEf = GetComponent<ParticleSystem>();
+        LAttackEf.Play(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        LAttackEf.Play(false);
 
-        LeftAttack.position= Player_1.position;
-        LeftAttack.parent = Player_1;
 
+        LeftAt.position= Player_1.position;
+        LeftAt.parent = Player_1;
         
+        if(At.PlayPartical == true)
+        {
+            LAttackEf.Play(true);
+        }
+        if (At.PlayPartical == false)
+        {
+            LAttackEf.Stop(true);
+            LAttackEf.Play(false);
+        }
     }
 }
 
