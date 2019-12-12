@@ -28,14 +28,14 @@ public class LeftAttackPosition : MonoBehaviour
         LeftAt.position= Player_1.position;
         LeftAt.parent = Player_1;
         
-        if(At.PlayPartical == true)
+        if(At.PlayPartical == 1)
         {
             LAttackEf.Play(true);
         }
-        if (At.PlayPartical == false)
+        if (At.PlayPartical == 0)
         {
             LAttackEf.Stop(true);
-            LAttackEf.Play(false);
+            
         }
     }
 }

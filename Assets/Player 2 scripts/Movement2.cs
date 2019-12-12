@@ -17,7 +17,7 @@ public class Movement2 : MonoBehaviour
     public float right = 0;
     public float down = 0;
     public float up = 0;
-    public float DamageCooldown = 0;
+    public float DamageCooldown = 0f;
     Collider m_ObjectCollider;
 
 
@@ -139,19 +139,32 @@ public class Movement2 : MonoBehaviour
         if (H.TakeDamage == 1)
         {
             if (DamageCooldown == 0)
-                Health = Health - 2;
-            DamageCooldown = 1;
+            {
+                Health = Health - 15;
+                DamageCooldown = DamageCooldown + .5f;
+
+            }
+            
         }
 
         if (DamageCooldown > 0)
         {
-            DamageCooldown =DamageCooldown -  1;
+            DamageCooldown = DamageCooldown - Time.deltaTime;
         }
 
-        if (Health == 0)
+        if (DamageCooldown < 0)
+        {
+            DamageCooldown = 0;
+        }
+
+        if (Health == 0) 
         {
             Destroy(gameObject);
         }
 
+        if (Health < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
     public float grounded = 0;
     public float time = 1;
     public Vector3 Position;
-
+    public float timeGoingThrough = 0f;
     //The collision and trigger stuff
 
 
@@ -46,7 +46,7 @@ public class Movement : MonoBehaviour
     {
 
     }
-    private void OnTriggerExit(Collider ground)
+    private void OnTriggerExit(Collider other)
     {
         m_ObjectCollider.isTrigger = false;
     }
@@ -136,20 +136,37 @@ public class Movement : MonoBehaviour
             Position = rb.position;
             rb.velocity = new Vector3(0, jumpspeed, 0);
             stance = stance + 1;
+           
+        }
+        if (Input.GetKey(KeyCode.UpArrow)) { 
+           
             m_ObjectCollider.isTrigger = true;
+            
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            timeGoingThrough = 0.1f;
         }
 
-        if (stance == 2)
-        {
-            m_ObjectCollider.isTrigger = false;
+        if (stance == 2){
+            
         }
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             Position = rb.position;
             m_ObjectCollider.isTrigger = true;
-
+            timeGoingThrough = 0.2f;
+        }
+        if(timeGoingThrough < 0)
+        {
+            m_ObjectCollider.isTrigger = false;
         }
 
+        if(timeGoingThrough > 0)
+        {
+            timeGoingThrough = timeGoingThrough - Time.deltaTime;
+            
+        }
 
     }
 }  

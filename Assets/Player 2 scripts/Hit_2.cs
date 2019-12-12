@@ -10,6 +10,8 @@ public class Hit_2 : MonoBehaviour
     public float Hit = 0;
     public GameObject LeftAttack;
     public GameObject Player_1;
+    public ParticleSystem HitParticle;
+
     private void OnTriggerEnter(Collider LeftAttack)
     {
         Hit = 1;
@@ -22,6 +24,9 @@ public class Hit_2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        HitParticle.Stop(true);
+        HitParticle.Play(false);
+
         At = Player_1.GetComponent<Attacks>();
         GetComponent<Movement2>();
     }
@@ -31,12 +36,15 @@ public class Hit_2 : MonoBehaviour
     {
         if (Hit == 1)
         {
+            
             if (At.attackleft == true) {
                 TakeDamage = 1;
+                HitParticle.Play(true);
             }
             if (At.attackleft == false)
             {
                 TakeDamage = 0;
+                HitParticle.Stop(true);
             }
         }
     }

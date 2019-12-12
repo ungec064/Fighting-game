@@ -6,7 +6,7 @@ public class Attacks : MonoBehaviour
 {
     public bool attackleft = false;
     public float attackTimer = 0.0f;
-    public bool PlayPartical = false;
+    public float PlayPartical = 0;
     void Start()
     {
         
@@ -16,19 +16,24 @@ public class Attacks : MonoBehaviour
     
     void Update()
     {
-        PlayPartical = false;
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
 
-            if (attackTimer < 1) {
+            if (attackTimer < .001) {
                 attackleft = true;
                 attackTimer = 1.0f;
-                PlayPartical = true;
+                PlayPartical = 1;
+                
             }
+           
+
         }
         if (Input.GetKey(KeyCode.Mouse0) == false)
         {
             attackleft = false;
+            PlayPartical = 0;
+
         }
 
         if (attackTimer > 0) {
