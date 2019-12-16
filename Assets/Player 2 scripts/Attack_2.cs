@@ -30,7 +30,7 @@ void Update()
 
 
     }
-    if (Input.GetKey(KeyCode.Mouse0) == false)
+    if (Input.GetKey(KeyCode.Space) == false)
     {
         attackleft_2 = false;
         PlayPartical = 0;

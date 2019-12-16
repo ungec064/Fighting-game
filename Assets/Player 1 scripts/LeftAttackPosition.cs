@@ -12,7 +12,6 @@ public class LeftAttackPosition : MonoBehaviour
 
     void Start()
     {
-       
         LeftAt.position = Player_1.position;
         LeftAt.parent = Player_1;
         LAttackEf = GetComponent<ParticleSystem>();

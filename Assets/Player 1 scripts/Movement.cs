@@ -23,6 +23,10 @@ public class Movement : MonoBehaviour
     public float time = 1;
     public Vector3 Position;
     public float timeGoingThrough = 0f;
+    public float DamageCooldown = 0f;
+    Hit_1 H;
+    
+    
     //The collision and trigger stuff
 
 
@@ -56,6 +60,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         m_ObjectCollider = GetComponent<Collider>();
+        H = GetComponent<Hit_1>();
     }
 
 
@@ -166,6 +171,38 @@ public class Movement : MonoBehaviour
         {
             timeGoingThrough = timeGoingThrough - Time.deltaTime;
             
+        }
+        
+        //Damage and Death
+        if (H.TakeDamage_2 == 1)
+        {
+            if (DamageCooldown == 0)
+            {
+                Health = Health - 15;
+                DamageCooldown = DamageCooldown + .5f;
+
+            }
+
+        }
+
+        if (DamageCooldown > 0)
+        {
+            DamageCooldown = DamageCooldown - Time.deltaTime;
+        }
+
+        if (DamageCooldown < 0)
+        {
+            DamageCooldown = 0;
+        }
+
+        if (Health == 0)
+        {
+            Destroy(gameObject);
+        }
+
+        if (Health < 0)
+        {
+            Destroy(gameObject);
         }
 
     }
